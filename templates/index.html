@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResolveAI | Intelligent Complaint Management</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 17px 7%;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            border-bottom: 1px solid #e5e7eb;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo span {
+            color: #4f46e5;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+            background: #eef2ff;
+        }
+
+        .admin-link {
+            color: #ffffff !important;
+            background: #4f46e5 !important;
+        }
+
+        .admin-link:hover {
+            background: #4338ca !important;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            padding: 105px 7% 115px;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(99, 102, 241, 0.15),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(14, 165, 233, 0.10),
+                    transparent 30%
+                ),
+                #ffffff;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            margin-bottom: 18px;
+
+            border-radius: 30px;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 25px;
+
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .description {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #6b7280;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            margin-top: 32px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 24px;
+
+            border-radius: 10px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 8px 20px rgba(79, 70, 229, 0.22);
+
+            transition: 0.2s;
+        }
+
+        .hero-button:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .hero-secondary {
+            display: inline-block;
+
+            padding: 14px 24px;
+
+            border-radius: 10px;
+
+            border: 1px solid #d1d5db;
+
+            color: #374151;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+        .hero-secondary:hover {
+            background: #f9fafb;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           PROCESS
+        ========================= */
+
+        .process {
+            padding: 65px 7%;
+
+            background: #f8fafc;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            max-width: 700px;
+
+            margin: 0 auto 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+
+            margin-bottom: 10px;
+
+            color: #111827;
+        }
+
+        .section-heading p:not(.tag) {
+            color: #6b7280;
+        }
+
+        .process-grid {
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .process-card {
+            background: white;
+
+            padding: 28px;
+
+            border-radius: 16px;
+
+            border: 1px solid #e5e7eb;
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.07);
+        }
+
+        .process-number {
+            width: 45px;
+            height: 45px;
+
+            margin: 0 auto 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            font-weight: 800;
+        }
+
+        .process-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .process-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           COMPLAINT SECTION
+        ========================= */
+
+        .complaint-section {
+            padding: 90px 7%;
+
+            background: white;
+        }
+
+        .complaint-layout {
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 45px;
+
+            align-items: center;
+        }
+
+        .complaint-info h2 {
+            font-size: 38px;
+
+            line-height: 1.15;
+
+            margin-bottom: 15px;
+        }
+
+        .complaint-info > p {
+            color: #6b7280;
+
+            margin-bottom: 25px;
+        }
+
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #374151;
+
+            font-size: 14px;
+        }
+
+        .check {
+            width: 27px;
+            height: 27px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #dcfce7;
+
+            color: #15803d;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .complaint-card {
+            background: #ffffff;
+
+            padding: 32px;
+
+            border-radius: 20px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 18px 45px rgba(15, 23, 42, 0.08);
+        }
+
+        .form-title {
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        .form-subtitle {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #374151;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            color: #111827;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #4f46e5;
+
+            box-shadow:
+                0 0 0 3px rgba(79, 70, 229, 0.10);
+        }
+
+        textarea {
+            min-height: 150px;
+
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .submit-button:hover {
+            background: #4338ca;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 20px rgba(79, 70, 229, 0.20);
+        }
+
+        .privacy-note {
+            margin-top: 12px;
+
+            text-align: center;
+
+            color: #9ca3af;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            padding: 80px 7%;
+
+            background: #f8fafc;
+        }
+
+        .feature-grid {
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 16px;
+
+            border: 1px solid #e5e7eb;
+
+            transition: 0.25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.07);
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 12px;
+
+            background: #eef2ff;
+
+            font-size: 22px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 75px 7%;
+
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #9ca3af;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 25px;
+
+            text-align: center;
+
+            background: #0b1120;
+
+            color: #9ca3af;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links a {
+                padding: 7px 8px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 75px 5%;
+            }
+
+            .process-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .complaint-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .complaint-info {
+                text-align: center;
+            }
+
+            .benefit {
+                justify-content: center;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .nav-links a:nth-child(2) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-button,
+            .hero-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .complaint-section,
+            .features,
+            .process {
+                padding: 60px 5%;
+            }
+
+            .complaint-card {
+                padding: 22px;
+            }
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+
+            .complaint-info h2 {
+                font-size: 31px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Resolve<span>AI</span>
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="#complaint">
+            Submit Complaint
+        </a>
+
+        <a href="/admin" class="admin-link">
+            Admin
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="tag">
+            AI-POWERED COMPLAINT MANAGEMENT
+        </p>
+
+
+        <h1>
+            Report an Issue.<br>
+            Let <span>AI Prioritize</span> It.
+        </h1>
+
+
+        <p class="description">
+
+            ResolveAI intelligently analyzes complaints,
+            identifies their category and urgency, and routes
+            them to the appropriate department for faster resolution.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#complaint"
+                class="hero-button"
+            >
+                Submit a Complaint →
+            </a>
+
+            <a
+                href="#how-it-works"
+                class="hero-secondary"
+            >
+                How It Works
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="process" id="how-it-works">
+
+    <div class="section-heading">
+
+        <p class="tag">
+            SIMPLE PROCESS
+        </p>
+
+        <h2>
+            From Complaint to Resolution
+        </h2>
+
+        <p>
+            ResolveAI makes complaint handling faster and smarter.
+        </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                01
+            </div>
+
+            <h3>
+                Report
+            </h3>
+
+            <p>
+                Describe your issue and submit your complaint
+                through the secure form.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                02
+            </div>
+
+            <h3>
+                AI Analysis
+            </h3>
+
+            <p>
+                AI identifies the complaint category,
+                urgency and priority score.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                03
+            </div>
+
+            <h3>
+                Resolve
+            </h3>
+
+            <p>
+                The complaint is routed to the appropriate
+                department for action.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     COMPLAINT FORM
+========================= -->
+
+<section
+    class="complaint-section"
+    id="complaint"
+>
+
+    <div class="complaint-layout">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="complaint-info">
+
+            <p class="tag">
+                RAISE YOUR VOICE
+            </p>
+
+
+            <h2>
+                Tell us what needs to be resolved.
+            </h2>
+
+
+            <p>
+
+                Your complaint will be analyzed by our
+                AI system to determine its category,
+                urgency and responsible department.
+
+            </p>
+
+
+            <div class="benefits">
+
+                <div class="benefit">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    AI-powered analysis
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Automatic priority detection
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Smart department routing
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Complaint tracking
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <div class="complaint-card">
+
+            <h3 class="form-title">
+                Submit Your Complaint
+            </h3>
+
+            <p class="form-subtitle">
+                Provide accurate details so AI can analyze your issue effectively.
+            </p>
+
+
+            <form
+                action="/submit"
+                method="POST"
+            >
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="complaint">
+                        Complaint
+                    </label>
+
+                    <textarea
+                        id="complaint"
+                        name="complaint"
+                        placeholder="Describe your issue clearly. Include the location, problem and urgency if relevant..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    🤖 Analyze & Submit Complaint
+                </button>
+
+
+                <p class="privacy-note">
+                    Your complaint will be securely processed by ResolveAI.
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="features">
+
+    <div class="section-heading">
+
+        <p class="tag">
+            WHY RESOLVEAI
+        </p>
+
+        <h2>
+            Intelligent Complaint Processing
+        </h2>
+
+        <p>
+            Designed to help organizations respond faster
+            to the issues that matter most.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <div class="feature-card">
+
+            <div class="icon">
+                🤖
+            </div>
+
+            <h3>
+                AI Analysis
+            </h3>
+
+            <p>
+                Complaint text is analyzed using AI techniques
+                to understand the nature of the issue.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="icon">
+                ⚡
+            </div>
+
+            <h3>
+                Priority Detection
+            </h3>
+
+            <p>
+                Complaints are classified into Critical,
+                High, Medium or Low priority.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="icon">
+                🏢
+            </div>
+
+            <h3>
+                Smart Routing
+            </h3>
+
+            <p>
+                AI recommends the department best suited
+                to handle each complaint.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <h2>
+        Have an issue? Let's resolve it.
+    </h2>
+
+    <p>
+        Submit your complaint and let ResolveAI do the analysis.
+    </p>
+
+    <a
+        href="#complaint"
+        class="hero-button"
+    >
+        Submit Complaint →
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 ResolveAI · Intelligent Complaint Management System
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
